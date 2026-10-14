@@ -1,16 +1,17 @@
 import Link from "next/link";
 import { Arrow } from "./arrow";
 
-export function SiteHeader() {
+export function SiteHeader({ anchorId = "top" }: { anchorId?: string | null }) {
+  const HomeLink = anchorId === null ? "a" : Link;
   return (
-    <header id="top" className="site-header wrap">
-      <Link href="/#top" className="wordmark" aria-label="Michelle Ching home">
+    <header id={anchorId ?? undefined} className="site-header wrap">
+      <HomeLink href={anchorId === null ? "#top" : "/#top"} className="wordmark" aria-label="Michelle Ching home">
         <span className="monogram">mc<span>.</span></span>
         <span>Michelle Ching</span>
-      </Link>
+      </HomeLink>
       <nav aria-label="Main navigation">
         <Link href="/#expertise">Expertise</Link>
-        <Link href="/#experience">Selected work</Link>
+        <Link href="/#experience">Leadership in Action</Link>
         <Link href="/#challenger">Thought leadership</Link>
       </nav>
       <Link href="/#connect" className="header-contact">Let’s connect <Arrow diagonal /></Link>

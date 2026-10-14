@@ -23,23 +23,23 @@ export default function Home() {
               <p>For me, that means the curiosity to question what’s accepted, the courage to imagine something better, and the conviction to bring people along.</p>
             </div>
             <div className="hero-actions">
-              <a className="button button-dark" href="#challenger">Explore my thinking <Arrow diagonal /></a>
+              <a className="button button-dark" href="#challenger">Explore my thinking <Arrow /></a>
               <a className="text-link" href="#connect">Let’s connect <Arrow /></a>
             </div>
           </div>
           <div className="hero-art" aria-hidden="true">
-            <Image src="/images/softened-facets-hero.png" alt="" fill sizes="100vw" preload />
+            <Image src="/images/layered-possibilities-hero.png" alt="" fill sizes="100vw" preload />
           </div>
           <div className="hero-bottom wrap"><span>TORONTO, CANADA / ALWAYS CURIOUS</span><a href="#throughline">Discover the throughline <Arrow /></a></div>
         </section>
 
         <div className="experience-strip wrap">
-          <p>20+ years of experience.<br /><strong>Many perspectives. One throughline.</strong></p>
+          <p>20+ years of experience. <strong>Many perspectives. One throughline.</strong></p>
           <LogoCarousel />
         </div>
 
         <section id="throughline" className="intro-section wrap" aria-labelledby="intro-title" data-reveal>
-          <p className="eyebrow"><span className="chapter-number">01 /</span> THE THROUGHLINE</p>
+          <p className="eyebrow section-label">THE THROUGHLINE</p>
           <h2 id="intro-title" className="intro-heading">Bold thinking.<br /><em>Grounded in experience.</em></h2>
           <div className="intro-grid">
             <div className="curiosity-panel" data-reveal>
@@ -66,14 +66,14 @@ export default function Home() {
               <p>I&apos;ve built brands, unlock growth, transformed marketing capabilities and led teams through complexity. Along the way, I&apos;ve learned that bold thinking creates possibilities, but commercial discipline and human leadership turn them into meaningful results.</p>
               <p>This is where I share what I&apos;ve learned, explore what comes next and connect with people who believe there may be a better way.</p>
               <span className="small-label">TORONTO, CANADA · OPEN TO A GOOD CONVERSATION</span>
+              <a className="text-link throughline-link" href="#expertise">See where we could make a difference <Arrow /></a>
             </div>
           </div>
         </section>
 
         <section id="expertise" className="expertise-section wrap" aria-labelledby="expertise-title">
-          <div className="section-heading" data-reveal>
-            <div><p className="eyebrow"><span className="chapter-number">02 /</span> WHERE WE COULD MAKE A DIFFERENCE</p><h2 id="expertise-title">Your next challenge.<br /><em>Our starting point.</em></h2></div>
-            <p>Big ambitions. Complex questions. New possibilities.<br />Let’s connect the dots—and find a way forward.</p>
+          <div className="section-heading stacked-intro" data-reveal>
+            <div><p className="eyebrow section-label">WHERE WE COULD MAKE A DIFFERENCE</p><h2 id="expertise-title">Your next challenge.<br /><em>Our starting point.</em></h2><p className="section-intro-copy">Big ambitions. Complex questions. New possibilities.<br />Let’s connect the dots—and find a way forward.</p></div>
           </div>
           <div className="collaboration-grid">
             {offerings.map((offering) => (
@@ -91,13 +91,22 @@ export default function Home() {
 
         <section id="experience" className="work-section" aria-labelledby="work-title">
           <div className="wrap">
-            <div className="section-heading leadership-intro" data-reveal><div><p className="eyebrow"><span className="chapter-number">03 /</span> LEADERSHIP IN ACTION</p><h2 id="work-title">Different challenges. One challenger mindset.</h2><div className="leadership-copy"><p>From challenging industry giants to driving reinvention within established organizations, my career has taken me across both sides of the challenger equation.</p><p>Different environments. Different complexities. But one consistent belief: meaningful progress begins when we question the conventional, see possibilities others might miss, and bring people together to make them happen.</p><p>Here are four experiences that have shaped how I think, lead and create change.</p></div></div></div>
+            <div className="section-heading leadership-intro" data-reveal>
+              <div><p className="eyebrow section-label">LEADERSHIP IN ACTION</p><h2 id="work-title">Different challenges. One challenger mindset.</h2><div className="leadership-copy"><p>From challenging industry giants to driving reinvention within established organizations, my career has taken me across both sides of the challenger equation.</p><p>Different environments. Different complexities. But one consistent belief: meaningful progress begins when we question the conventional, see possibilities others might miss, and bring people together to make them happen.</p><p>Here are four experiences that have shaped how I think, lead and create change.</p></div></div>
+              <div className="leadership-intro-art" aria-hidden="true"><div className="leadership-art-bleed"><Image src="/images/leadership-perspectives.png" alt="" fill sizes="(max-width: 760px) 100vw, (max-width: 1280px) 50vw, calc((100vw - 1280px) / 2 + 600px)" /></div></div>
+            </div>
             <div className="leadership-stories">
-              <section className="leadership-story" aria-labelledby="leadership-story-01" data-reveal>
-                <span className="leadership-number" aria-hidden="true">01</span>
-                <div>
-                  <p className="small-label">CHALLENGER STRATEGY</p>
-                  <h3 id="leadership-story-01">Competing with giants. Without playing their game.</h3>
+              <details className="leadership-story" name="leadership-stories" data-reveal>
+                <summary className="leadership-summary">
+                  <h3 id="leadership-story-01">
+                  <span className="leadership-number" aria-hidden="true">01</span>
+                  <span className="leadership-story-heading">
+                    <span className="small-label">CHALLENGER STRATEGY</span>
+                    <span className="leadership-story-title">Competing with giants. Without playing their game.</span>
+                  </span>
+                  <span className="leadership-toggle" aria-hidden="true"><span className="leadership-toggle-label">Explore story</span><span className="leadership-toggle-icon" /></span>
+                  </h3>
+                </summary>
                   <div className="leadership-story-copy">
                     <p><strong>When you can&apos;t outspend the competition, you have to find ways to outthink it.</strong></p>
                     <p>At HSBC Canada, I helped lead marketing for a challenger brand competing in a market dominated by much larger, established players.</p>
@@ -107,13 +116,18 @@ export default function Home() {
                     <p><strong>What it taught me:</strong> Constraints can be powerful catalysts for ingenuity. Challenger thinking isn&apos;t about being different for the sake of it. It&apos;s about finding an advantage others have overlooked.</p>
                     <p><em>Strategic differentiation · Customer-led growth · Commercial discipline · Creative courage</em></p>
                   </div>
-                </div>
-              </section>
-              <section className="leadership-story" aria-labelledby="leadership-story-02" data-reveal>
-                <span className="leadership-number" aria-hidden="true">02</span>
-                <div>
-                  <p className="small-label">ENTERPRISE REINVENTION</p>
-                  <h3 id="leadership-story-02">Challenging the playbook from within.</h3>
+              </details>
+              <details className="leadership-story" name="leadership-stories" data-reveal>
+                <summary className="leadership-summary">
+                  <h3 id="leadership-story-02">
+                  <span className="leadership-number" aria-hidden="true">02</span>
+                  <span className="leadership-story-heading">
+                    <span className="small-label">ENTERPRISE REINVENTION</span>
+                    <span className="leadership-story-title">Challenging the playbook from within.</span>
+                  </span>
+                  <span className="leadership-toggle" aria-hidden="true"><span className="leadership-toggle-label">Explore story</span><span className="leadership-toggle-icon" /></span>
+                  </h3>
+                </summary>
                   <div className="leadership-story-copy">
                     <p><strong>Sometimes the hardest organization to challenge is your own.</strong></p>
                     <p>Leading growth and marketing initiatives within RBC gave me a different perspective on the challenger mindset.</p>
@@ -123,13 +137,18 @@ export default function Home() {
                     <p><strong>What it taught me:</strong> Challenger thinking isn&apos;t reserved for challenger brands. Established organizations need the curiosity to question what&apos;s working today—and the courage to evolve before they have to.</p>
                     <p><em>Enterprise transformation · Growth strategy · Cross-functional leadership · Strategic execution</em></p>
                   </div>
-                </div>
-              </section>
-              <section className="leadership-story" aria-labelledby="leadership-story-03" data-reveal>
-                <span className="leadership-number" aria-hidden="true">03</span>
-                <div>
-                  <p className="small-label">CUSTOMER-LED TRANSFORMATION</p>
-                  <h3 id="leadership-story-03">From transactions to meaningful relationships.</h3>
+              </details>
+              <details className="leadership-story" name="leadership-stories" data-reveal>
+                <summary className="leadership-summary">
+                  <h3 id="leadership-story-03">
+                  <span className="leadership-number" aria-hidden="true">03</span>
+                  <span className="leadership-story-heading">
+                    <span className="small-label">CUSTOMER-LED TRANSFORMATION</span>
+                    <span className="leadership-story-title">From transactions to meaningful relationships.</span>
+                  </span>
+                  <span className="leadership-toggle" aria-hidden="true"><span className="leadership-toggle-label">Explore story</span><span className="leadership-toggle-icon" /></span>
+                  </h3>
+                </summary>
                   <div className="leadership-story-copy">
                     <p><strong>What if we stopped designing around what businesses want to say—and started with what customers actually need?</strong></p>
                     <p>Throughout my career, I&apos;ve believed that sustainable growth begins with understanding people, not simply products or channels.</p>
@@ -140,13 +159,18 @@ export default function Home() {
                     <p><strong>What it taught me:</strong> The best innovation often starts with a simple shift in perspective—from what an organization wants to deliver to what a person genuinely values.</p>
                     <p><em>Customer experience · Personalization · Digital transformation · Human-centred innovation</em></p>
                   </div>
-                </div>
-              </section>
-              <section className="leadership-story" aria-labelledby="leadership-story-04" data-reveal>
-                <span className="leadership-number" aria-hidden="true">04</span>
-                <div>
-                  <p className="small-label">HUMAN LEADERSHIP</p>
-                  <h3 id="leadership-story-04">Building teams that can move mountains.</h3>
+              </details>
+              <details className="leadership-story" name="leadership-stories" data-reveal>
+                <summary className="leadership-summary">
+                  <h3 id="leadership-story-04">
+                  <span className="leadership-number" aria-hidden="true">04</span>
+                  <span className="leadership-story-heading">
+                    <span className="small-label">HUMAN LEADERSHIP</span>
+                    <span className="leadership-story-title">Building teams that can move mountains.</span>
+                  </span>
+                  <span className="leadership-toggle" aria-hidden="true"><span className="leadership-toggle-label">Explore story</span><span className="leadership-toggle-icon" /></span>
+                  </h3>
+                </summary>
                   <div className="leadership-story-copy">
                     <p><strong>Ambitious strategies don&apos;t transform organizations. People do.</strong></p>
                     <p>I&apos;ve had the privilege of building and leading teams through growth, organizational change, leadership transitions and the uncertainty of a major acquisition.</p>
@@ -157,16 +181,16 @@ export default function Home() {
                     <p><strong>What it taught me:</strong> The true measure of leadership isn&apos;t just what a team accomplishes while you&apos;re leading it. It&apos;s the confidence, capability and courage people carry forward.</p>
                     <p><em>Organizational leadership · Culture &amp; transformation · Talent development · Leading through change</em></p>
                   </div>
-                </div>
-              </section>
+              </details>
             </div>
+            <div className="section-bridge" data-reveal><a className="text-link" href="#challenger">Explore my thinking <Arrow /></a></div>
           </div>
         </section>
 
         <section id="challenger" className="challenger-section" aria-labelledby="challenger-title">
           <div className="wrap">
-            <div className="challenger-topline" data-reveal><p className="eyebrow"><span className="chapter-number">04 /</span> THOUGHT LEADERSHIP / AN EVOLVING EXPLORATION</p><span className="project-tag">THREE PILLARS. ROOM TO STRETCH.</span></div>
-            <div className="challenger-intro" data-reveal><h2 id="challenger-title">Questions I’m exploring.<br /><em>Thinking that keeps growing.</em></h2><div><p className="large-copy">For the thinkers.<br />The dreamers. The leaders.</p><p>Three connected threads for my points of view, ideas, and perspectives. Grounded in experience, open to new possibilities.</p><p>Some thoughts will become papers. Others will start as a question, an observation, or a conversation. This is a space to stretch my thinking—and invite you into it.</p><a href="#perspectives" className="text-link">Explore the writing space <Arrow /></a></div></div>
+            <div className="challenger-topline" data-reveal><p className="eyebrow section-label">THOUGHT LEADERSHIP / AN EVOLVING EXPLORATION</p><span className="project-tag">THREE PILLARS. ROOM TO STRETCH.</span></div>
+            <div className="challenger-intro" data-reveal><h2 id="challenger-title">Questions I’m exploring.<br /><em>Thinking that keeps growing.</em></h2><div className="challenger-context"><p className="large-copy">For the thinkers. The dreamers. The leaders.</p><p>Three connected threads for my points of view, ideas, and perspectives. Grounded in experience, open to new possibilities.</p><p>Some thoughts will become papers. Others will start as a question, an observation, or a conversation. This is a space to stretch my thinking—and invite you into it.</p><a href="#perspectives" className="text-link">Explore the writing space <Arrow /></a></div></div>
             <div className="thought-pillars">
               {pillars.map((pillar) => (
                 <article className="thought-pillar" key={pillar.id} data-reveal>
@@ -179,13 +203,13 @@ export default function Home() {
         </section>
 
         <section id="perspectives" className="perspectives-section wrap" aria-labelledby="perspectives-title">
-          <div className="section-heading" data-reveal><div><p className="eyebrow"><span className="chapter-number">05 /</span> POVS, IDEAS & PERSPECTIVES</p><h2 id="perspectives-title">The thinking <em>in progress.</em></h2></div><p>From a first observation to a considered paper.<br />A growing collection across three pillars.</p></div>
+          <div className="section-heading stacked-intro" data-reveal><div><p className="eyebrow section-label">POVS, IDEAS & PERSPECTIVES</p><h2 id="perspectives-title">The thinking <em>in progress.</em></h2><p className="section-intro-copy">From a first observation to a considered paper.<br />A growing collection across three pillars.</p></div></div>
           <PovLibrary />
         </section>
 
         <section id="connect" className="connect-section" aria-labelledby="connect-title">
-          <div className="connect-inner wrap" data-reveal><div><p className="eyebrow"><span className="chapter-number">06 /</span> LET’S EXCHANGE IDEAS</p><h2 id="connect-title">What are you<br /><em>thinking about?</em></h2><p>A growth challenge. An organization ready for reinvention. A leadership opportunity. Or simply an idea worth exploring.</p><p>I&apos;m open to conversations about strategic advisory, consulting, speaking and executive leadership.</p></div>
-          <a className="button button-dark" href="mailto:mc.ching@gmail.com">Let&apos;s start a conversation <Arrow /></a></div>
+          <div className="connect-inner wrap" data-reveal><div><p className="eyebrow section-label">LET’S EXCHANGE IDEAS</p><h2 id="connect-title">What are you<br /><em>thinking about?</em></h2><p>A growth challenge. An organization ready for reinvention. A leadership opportunity. Or simply an idea worth exploring.</p><p>I&apos;m open to conversations about strategic advisory, consulting, speaking and executive leadership.</p></div>
+          <div className="connect-actions"><a className="button button-dark" href="mailto:mc.ching@gmail.com">Let&apos;s start a conversation <Arrow /></a><a className="connect-email" href="mailto:mc.ching@gmail.com">mc.ching@gmail.com</a></div></div>
         </section>
       </main>
       <SiteFooter />

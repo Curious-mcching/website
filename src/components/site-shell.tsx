@@ -14,7 +14,7 @@ export function SiteHeader({ anchorId = "top" }: { anchorId?: string | null }) {
         <Link href="/#experience">Leadership in Action</Link>
         <Link href="/#challenger">Thought leadership</Link>
       </nav>
-      <Link href="/#connect" className="header-contact">Let’s connect <Arrow diagonal /></Link>
+      <Link href="/#connect" className="header-contact">Let’s connect <Arrow /></Link>
     </header>
   );
 }
@@ -27,6 +27,7 @@ export function SiteFooter() {
       <div>
         <a href="https://www.linkedin.com/in/chingmichelle/" target="_blank" rel="noreferrer">LinkedIn <Arrow diagonal /></a>
         {process.env.NODE_ENV === "development" && <Link href="/studio">Publishing studio <Arrow diagonal /></Link>}
+        <a href="#top" className="back-to-top">Back to top <Arrow /></a>
       </div>
     </footer>
   );

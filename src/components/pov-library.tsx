@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import type { Pov } from "@/lib/povs";
 import { pillars, pillarFor, writingFormats } from "@/lib/thought-leadership";
 import { Arrow } from "./arrow";
@@ -31,7 +32,7 @@ export function PovLibrary() {
       </div>
       {povs.length === 0 ? (
     <div className="writing-empty">
-      <div className="empty-paper" aria-hidden="true"><span>POV</span><i /><i /><i /><Arrow diagonal /></div>
+      <div className="writing-art-bleed" aria-hidden="true"><Image className="writing-artwork" src="/images/art-of-possibility.png" alt="" fill sizes="(max-width: 760px) 100vw, (max-width: 1050px) 50vw, 520px" /></div>
       <div><span className="small-label">THE NEXT CHAPTER IS TAKING SHAPE</span><h3>Room for ideas.<br /><em>Space for what’s next.</em></h3><p>{pillarFilter === "All" ? "Nothing published yet. Three pillars, and room for the first idea, perspective, or paper." : `Nothing published in ${pillars.find((pillar) => pillar.id === pillarFilter)?.title} yet. There’s room for a first question, observation, or deeper exploration.`}</p><a href="mailto:mc.ching@gmail.com?subject=An%20idea%20to%20explore" className="text-link">Have a question worth exploring? <Arrow diagonal /></a></div>
     </div>
       ) : <>

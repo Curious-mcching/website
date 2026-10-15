@@ -1,7 +1,6 @@
 export const pillars = [
   {
     id: "challenger",
-    number: "01",
     lens: "MY SIGNATURE THESIS",
     title: "The Challenger Mindset",
     question: "What does it take to win when the conventional playbook no longer works?",
@@ -9,7 +8,6 @@ export const pillars = [
   },
   {
     id: "human-machine",
-    number: "02",
     lens: "AN EMERGING FRONTIER",
     title: "Human × Machine",
     question: "As AI becomes more capable, what becomes more valuable about being human?",
@@ -17,7 +15,6 @@ export const pillars = [
   },
   {
     id: "reinvention",
-    number: "03",
     lens: "MY LEADERSHIP LENS",
     title: "Leading Through Reinvention",
     question: "How do we build organizations that can transform without losing their humanity?",

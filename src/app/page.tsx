@@ -24,13 +24,12 @@ export default function Home() {
             </div>
             <div className="hero-actions">
               <a className="button button-dark" href="#challenger">Explore my thinking <Arrow /></a>
-              <a className="text-link" href="#connect">Let’s connect <Arrow /></a>
             </div>
           </div>
           <div className="hero-art" aria-hidden="true">
             <Image src="/images/layered-possibilities-hero.png" alt="" fill sizes="100vw" preload />
           </div>
-          <div className="hero-bottom wrap"><span>TORONTO, CANADA / ALWAYS CURIOUS</span><a href="#throughline">Discover the throughline <Arrow /></a></div>
+          <div className="hero-bottom wrap"><span>Michelle Ching <span className="hero-signoff-dot" aria-hidden="true">·</span> Always curious</span><a href="#throughline">Discover the throughline <Arrow /></a></div>
         </section>
 
         <div className="experience-strip wrap">
@@ -65,7 +64,6 @@ export default function Home() {
               <p>Across 20+ years in executive marketing and agency leadership, I&apos;ve learned what it takes to challenge industry giants - and what it takes to drive reinvention from within one.</p>
               <p>I&apos;ve built brands, unlock growth, transformed marketing capabilities and led teams through complexity. Along the way, I&apos;ve learned that bold thinking creates possibilities, but commercial discipline and human leadership turn them into meaningful results.</p>
               <p>This is where I share what I&apos;ve learned, explore what comes next and connect with people who believe there may be a better way.</p>
-              <span className="small-label">TORONTO, CANADA · OPEN TO A GOOD CONVERSATION</span>
               <a className="text-link throughline-link" href="#expertise">See where we could make a difference <Arrow /></a>
             </div>
           </div>
@@ -73,7 +71,10 @@ export default function Home() {
 
         <section id="expertise" className="expertise-section wrap" aria-labelledby="expertise-title">
           <div className="section-heading stacked-intro" data-reveal>
-            <div><p className="eyebrow section-label">WHERE WE COULD MAKE A DIFFERENCE</p><h2 id="expertise-title">Your next challenge.<br /><em>Our starting point.</em></h2><p className="section-intro-copy">Big ambitions. Complex questions. New possibilities.<br />Let’s connect the dots—and find a way forward.</p></div>
+            <div>
+              <p className="eyebrow section-label">WHERE WE COULD MAKE A DIFFERENCE</p><h2 id="expertise-title">Your next challenge.<br /><em>Our starting point.</em></h2><p className="section-intro-copy">Big ambitions. Complex questions. New possibilities.<br />Let’s connect the dots—and find a way forward.</p>
+              <a className="button section-invitation" href="#connect">Start with a question <Arrow /></a>
+            </div>
           </div>
           <div className="collaboration-grid">
             {offerings.map((offering) => (
@@ -86,13 +87,12 @@ export default function Home() {
               </article>
             ))}
           </div>
-          <div className="collaboration-footer" data-reveal><p>You don’t need a finished brief. Just a question worth exploring.</p><a className="text-link" href="#connect">What’s on your mind? <Arrow /></a></div>
         </section>
 
         <section id="experience" className="work-section" aria-labelledby="work-title">
           <div className="wrap">
             <div className="section-heading leadership-intro" data-reveal>
-              <div><p className="eyebrow section-label">LEADERSHIP IN ACTION</p><h2 id="work-title">Different challenges. One challenger mindset.</h2><div className="leadership-copy"><p>From challenging industry giants to driving reinvention within established organizations, my career has taken me across both sides of the challenger equation.</p><p>Different environments. Different complexities. But one consistent belief: meaningful progress begins when we question the conventional, see possibilities others might miss, and bring people together to make them happen.</p><p>Here are four experiences that have shaped how I think, lead and create change.</p></div></div>
+              <div><p className="eyebrow section-label">LEADERSHIP IN ACTION</p><h2 id="work-title">Different challenges. One challenger mindset.</h2><div className="leadership-copy"><p>From challenging industry giants to driving reinvention within established organizations, my career has taken me across both sides of the challenger equation.</p><p>Different environments. Different complexities. But one consistent belief: meaningful progress begins when we question the conventional, see possibilities others might miss, and bring people together to make them happen.</p><p>Here are four experiences that have shaped how I think, lead and create change.</p></div><a className="button section-invitation" href="#challenger">Explore my thinking <Arrow /></a></div>
               <div className="leadership-intro-art" aria-hidden="true"><div className="leadership-art-bleed"><Image src="/images/leadership-perspectives.png" alt="" fill sizes="(max-width: 760px) 100vw, (max-width: 1280px) 50vw, calc((100vw - 1280px) / 2 + 600px)" /></div></div>
             </div>
             <div className="leadership-stories">
@@ -183,7 +183,6 @@ export default function Home() {
                   </div>
               </details>
             </div>
-            <div className="section-bridge" data-reveal><a className="text-link" href="#challenger">Explore my thinking <Arrow /></a></div>
           </div>
         </section>
 
@@ -194,8 +193,8 @@ export default function Home() {
             <div className="thought-pillars">
               {pillars.map((pillar) => (
                 <article className="thought-pillar" key={pillar.id} data-reveal>
-                  <div className={`pillar-art pillar-art-${pillar.id}`} aria-hidden="true"><span>{pillar.number}</span><i /><i /><i /></div>
-                  <div><p className="small-label">{pillar.number} / {pillar.lens}</p><h3>{pillar.title}</h3><p className="pillar-question">{pillar.question}</p><p className="pillar-description">{pillar.description}</p></div>
+                  <div className={`pillar-art pillar-art-${pillar.id}`} aria-hidden="true"><i /><i /><i /></div>
+                  <div><p className="small-label">{pillar.lens}</p><h3>{pillar.title}</h3><p className="pillar-question">{pillar.question}</p><p className="pillar-description">{pillar.description}</p></div>
                 </article>
               ))}
             </div>

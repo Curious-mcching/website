@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Arrow } from "./arrow";
+import { SiteNavigation } from "./site-navigation";
 
 export function SiteHeader({ anchorId = "top" }: { anchorId?: string | null }) {
   const HomeLink = anchorId === null ? "a" : Link;
@@ -9,12 +10,7 @@ export function SiteHeader({ anchorId = "top" }: { anchorId?: string | null }) {
         <span className="monogram">mc<span>.</span></span>
         <span>Michelle Ching</span>
       </HomeLink>
-      <nav aria-label="Main navigation">
-        <Link href="/#expertise">Expertise</Link>
-        <Link href="/#experience">Leadership in Action</Link>
-        <Link href="/#challenger">Thought leadership</Link>
-      </nav>
-      <Link href="/#connect" className="header-contact">Let’s connect <Arrow /></Link>
+      <SiteNavigation isHome={anchorId === null} />
     </header>
   );
 }

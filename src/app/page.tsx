@@ -1,7 +1,10 @@
 import Image from "next/image";
 import { Arrow } from "@/components/arrow";
+import { ChallengerFilms } from "@/components/challenger-films";
+import { challengerFilms, enterpriseFilms } from "@/lib/challenger-films";
 import { HomeHeader } from "@/components/home-header";
 import { LogoCarousel } from "@/components/logo-carousel";
+import { ExperienceLensArt, PerspectiveArtwork } from "@/components/experience-perspectives";
 import { PovLibrary } from "@/components/pov-library";
 import { PageMotion } from "@/components/page-motion";
 import { SiteFooter, SiteHeader } from "@/components/site-shell";
@@ -31,11 +34,6 @@ export default function Home() {
           </div>
           <div className="hero-bottom wrap"><span>Michelle Ching <span className="hero-signoff-dot" aria-hidden="true">·</span> Always curious</span><a href="#throughline">Discover the throughline <Arrow /></a></div>
         </section>
-
-        <div className="experience-strip wrap">
-          <p>20+ years of experience. <strong>Many perspectives. One throughline.</strong></p>
-          <LogoCarousel />
-        </div>
 
         <section id="throughline" className="intro-section wrap" aria-labelledby="intro-title" data-reveal>
           <p className="eyebrow section-label">THE THROUGHLINE</p>
@@ -67,6 +65,48 @@ export default function Home() {
               <a className="text-link throughline-link" href="#expertise">See where we could make a difference <Arrow /></a>
             </div>
           </div>
+          <section id="agency-experience" className="experience-overview" aria-labelledby="agency-experience-title">
+            <div className="experience-overview-intro">
+            <div className="experience-overview-copy">
+              <p className="experience-tenure">20+ years of experience.</p>
+              <h3 id="agency-experience-title">Many perspectives.<br /><em>One throughline.</em></h3>
+              <p>My experience spans agency and enterprise leadership, multiple industries and marketing disciplines, and collaboration across local and global teams. That breadth shapes how I connect customer insight, creativity and commercial priorities.</p>
+            </div>
+              <PerspectiveArtwork />
+            </div>
+            <section className="experience-organizations" aria-labelledby="experience-organizations-title">
+              <h4 id="experience-organizations-title" className="experience-lens-title">Agency + enterprise</h4>
+            <div className="experience-evidence">
+              <div className="experience-employers">
+                <h5 className="experience-group-label">Where I&apos;ve built and led</h5>
+                <LogoCarousel />
+              </div>
+              <div className="agency-brands">
+                <h5 id="agency-brands-label" className="experience-group-label">Selected brands I&apos;ve worked on through agency roles</h5>
+                <ul className="agency-brand-grid" aria-labelledby="agency-brands-label">
+                  {["IBM", "BMW", "Kraft Foods", "Rogers", "Canada Post", "Purolator", "OLG", "SickKids Foundation"].map((brand) => <li key={brand}>{brand}</li>)}
+                </ul>
+              </div>
+            </div>
+            </section>
+            <div className="experience-lenses">
+              <section aria-labelledby="experience-industries-title">
+                <ExperienceLensArt kind="industries" />
+                <h4 id="experience-industries-title" className="experience-lens-title">Across industries</h4>
+                <p>Financial services. Automotive. Technology. Consumer packaged goods. Telecommunications. Logistics. Gaming. Non-profit.</p>
+              </section>
+              <section aria-labelledby="experience-disciplines-title">
+                <ExperienceLensArt kind="disciplines" />
+                <h4 id="experience-disciplines-title" className="experience-lens-title">Across marketing disciplines</h4>
+                <p>Brand strategy. Integrated multi-channel marketing. CRM, next-best action and customer lifecycle. Media.</p>
+              </section>
+              <section aria-labelledby="experience-markets-title">
+                <ExperienceLensArt kind="global" />
+                <h4 id="experience-markets-title" className="experience-lens-title">Local + global perspectives</h4>
+                <p>Grounded in Canada, with perspectives shaped by collaboration with HSBC teams in London, across Asia and Europe, and in the United States.</p>
+              </section>
+            </div>
+          </section>
         </section>
 
         <section id="expertise" className="expertise-section wrap" aria-labelledby="expertise-title">
@@ -92,7 +132,7 @@ export default function Home() {
         <section id="experience" className="work-section" aria-labelledby="work-title">
           <div className="wrap">
             <div className="section-heading leadership-intro" data-reveal>
-              <div><p className="eyebrow section-label">LEADERSHIP IN ACTION</p><h2 id="work-title">Different challenges. One challenger mindset.</h2><div className="leadership-copy"><p>From challenging industry giants to driving reinvention within established organizations, my career has taken me across both sides of the challenger equation.</p><p>Different environments. Different complexities. But one consistent belief: meaningful progress begins when we question the conventional, see possibilities others might miss, and bring people together to make them happen.</p><p>Here are four experiences that have shaped how I think, lead and create change.</p></div><a className="button section-invitation" href="#challenger">Explore my thinking <Arrow /></a></div>
+              <div><p className="eyebrow section-label">LEADERSHIP IN ACTION</p><h2 id="work-title">Different challenges. One challenger mindset.</h2><div className="leadership-copy"><p>From challenging industry giants to driving reinvention within established organizations, my career has taken me across both sides of the challenger equation. My perspective has been shaped by both agency and executive leadership—across categories, business models and very different customer needs.</p><p>Different environments. Different complexities. But one consistent belief: meaningful progress begins when we question the conventional, see possibilities others might miss, and bring people together to make them happen.</p><p>Here are four experiences that have shaped how I think, lead and create change.</p></div><a className="button section-invitation" href="#challenger">Explore my thinking <Arrow /></a></div>
               <div className="leadership-intro-art" aria-hidden="true"><div className="leadership-art-bleed"><Image src="/images/leadership-perspectives.png" alt="" fill sizes="(max-width: 760px) 100vw, (max-width: 1280px) 50vw, calc((100vw - 1280px) / 2 + 600px)" /></div></div>
             </div>
             <div className="leadership-stories">
@@ -113,6 +153,7 @@ export default function Home() {
                     <p>The challenge wasn&apos;t simply to do more with less. It was to find a different way to win.</p>
                     <p>That meant questioning category conventions, getting closer to what customers truly valued, and building differentiated brand and growth strategies that made every investment work harder.</p>
                     <p>Rather than following the category playbook, we focused on creating meaningful reasons for customers to choose us—bringing together customer insight, bold creativity and commercial discipline.</p>
+                    <ChallengerFilms id="challenger-films" eyebrow="SELECTED CREATIVE WORK" title="Creativity that punches above its weight." intro="A selection of films I led, bringing challenger thinking to life through bold creative work." films={challengerFilms} />
                     <p><strong>What it taught me:</strong> Constraints can be powerful catalysts for ingenuity. Challenger thinking isn&apos;t about being different for the sake of it. It&apos;s about finding an advantage others have overlooked.</p>
                     <p><em>Strategic differentiation · Customer-led growth · Commercial discipline · Creative courage</em></p>
                   </div>
@@ -132,10 +173,13 @@ export default function Home() {
                     <p><strong>Sometimes the hardest organization to challenge is your own.</strong></p>
                     <p>Leading growth and marketing initiatives within RBC gave me a different perspective on the challenger mindset.</p>
                     <p>In a large, established organization, the challenge isn&apos;t a lack of resources or ambition. It&apos;s navigating complexity, established ways of working and the competing priorities that come with scale.</p>
-                    <p>I focused on bringing clarity to growth opportunities, challenging conventional approaches and connecting teams around shared commercial priorities.</p>
-                    <p>It required more than a compelling strategy. It meant building alignment, making deliberate choices, encouraging experimentation and creating the conditions for teams to move from ambition to action.</p>
-                    <p><strong>What it taught me:</strong> Challenger thinking isn&apos;t reserved for challenger brands. Established organizations need the curiosity to question what&apos;s working today—and the courage to evolve before they have to.</p>
-                    <p><em>Enterprise transformation · Growth strategy · Cross-functional leadership · Strategic execution</em></p>
+                    <p>One expression of that mindset was RBC&apos;s &ldquo;Crochet&rdquo; campaign, developed with Battery and connected to RBC&apos;s partnership with Apple. I helped bring together customer insight, creative ambition and a commercial opportunity to tell a different kind of banking story.</p>
+                    <p>The starting point was a human insight: money decisions happen in everyday life, including the hobbies and passions people want to make room for. We looked beyond major financial milestones to explore how budgeting could enable creativity and personal expression.</p>
+                    <p>The film brought that idea to life through a young artist whose crochet transforms the world around her. The Apple iPad offer connected the story to a tool for creating—giving the partnership a role within the idea itself.</p>
+                    <p>For me, challenging the playbook from within meant connecting the brand, the partnership and the commercial objective around something people could care about. It required alignment across teams and creative partners, with the confidence to make space for a more imaginative approach.</p>
+                    <ChallengerFilms id="enterprise-films" eyebrow="CREATIVITY & PARTNERSHIP" title="A different perspective on everyday banking." intro="RBC’s Crochet campaign brings together everyday money decisions, creative possibility and the Apple partnership." films={enterpriseFilms} />
+                    <p><strong>What it taught me:</strong> Challenger thinking isn&apos;t reserved for challenger brands. Within an established organization, a fresh perspective and the right partnerships can open up new ways to connect with people.</p>
+                    <p><em>Enterprise reinvention · Strategic partnerships · Creative courage · Cross-functional leadership</em></p>
                   </div>
               </details>
               <details className="leadership-story" name="leadership-stories" data-reveal>

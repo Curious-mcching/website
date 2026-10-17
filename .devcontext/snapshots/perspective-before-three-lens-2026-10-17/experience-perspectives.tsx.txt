@@ -1,0 +1,44 @@
+import Image from "next/image";
+
+export function PerspectiveArtwork() {
+  return (
+    <div className="perspective-artwork" aria-hidden="true">
+      <Image src="/images/perspective-one-object-many-views-soft.png" alt="" fill sizes="(max-width: 760px) 100vw, (max-width: 1400px) 50vw, 640px" />
+    </div>
+  );
+}
+
+export function ExperienceLensArt({ kind }: { kind: "industries" | "disciplines" | "global" }) {
+  return (
+    <svg className="experience-lens-art" viewBox="0 0 320 140" fill="none" aria-hidden="true" focusable="false">
+      {kind === "industries" && (
+        <>
+          <ellipse className="experience-shadow-shape" cx="73" cy="72" rx="55" ry="21" transform="rotate(10 73 72)" fill="var(--eucalyptus)" fillOpacity=".7" />
+          <path className="experience-shadow-shape" d="M146 30Q158 24 170 29L200 48Q211 55 206 67L186 102Q180 113 167 107L137 90Q126 84 131 71L139 42Q141 34 146 30Z" fill="var(--iris)" fillOpacity=".38" />
+          <path className="experience-shadow-shape" d="M237 48Q244 37 253 48L294 99Q304 115 284 117L229 119Q212 119 219 102Z" fill="var(--eucalyptus-dark)" fillOpacity=".5" />
+          <path className="experience-lens-thread" d="M10 88C59 92 78 54 115 63S170 100 211 78 258 58 310 83" />
+        </>
+      )}
+      {kind === "disciplines" && (
+        <>
+          <ellipse className="experience-shadow-shape" cx="128" cy="73" rx="88" ry="27" transform="rotate(-12 128 73)" fill="var(--eucalyptus)" fillOpacity=".55" />
+          <path className="experience-shadow-shape" d="M156 25Q166 19 179 24L245 53Q259 59 251 73L225 111Q218 123 205 117L141 87Q129 81 136 67Z" fill="var(--iris)" fillOpacity=".35" />
+          <path className="experience-shadow-shape" d="M170 43Q179 33 188 46L226 106Q236 123 216 123L131 118Q112 116 126 100Z" fill="var(--eucalyptus-dark)" fillOpacity=".4" />
+          <path className="experience-lens-thread" d="M20 89C85 92 108 49 150 64S219 107 300 53" />
+        </>
+      )}
+      {kind === "global" && (
+        <>
+          <circle cx="160" cy="70" r="51" fill="var(--eucalyptus)" fillOpacity=".1" stroke="var(--eucalyptus-dark)" strokeOpacity=".65" />
+          <ellipse cx="160" cy="70" rx="25" ry="51" stroke="var(--iris)" strokeOpacity=".5" />
+          <ellipse cx="160" cy="70" rx="51" ry="21" stroke="var(--iris)" strokeOpacity=".5" />
+          <path d="M109 70H211M160 19V121" stroke="var(--iris)" strokeOpacity=".3" />
+          <path className="experience-lens-thread" d="M47 108C97 108 105 37 151 43S210 104 274 39" />
+          <circle cx="121" cy="55" r="5" fill="var(--eucalyptus-dark)" stroke="var(--paper)" strokeWidth="2" />
+          <circle cx="179" cy="58" r="4" fill="var(--iris)" stroke="var(--paper)" strokeWidth="2" />
+          <circle cx="204" cy="74" r="4" fill="var(--iris)" stroke="var(--paper)" strokeWidth="2" />
+        </>
+      )}
+    </svg>
+  );
+}

@@ -33,7 +33,7 @@ export function PovLibrary() {
       {povs.length === 0 ? (
     <div className="writing-empty">
       <div className="writing-art-bleed" aria-hidden="true"><Image className="writing-artwork" src="/images/art-of-possibility.png" alt="" fill sizes="(max-width: 760px) 100vw, (max-width: 1050px) 50vw, 520px" /></div>
-      <div><span className="small-label">THE NEXT CHAPTER IS TAKING SHAPE</span><h3>Room for ideas.<br /><em>Space for what’s next.</em></h3><p>{pillarFilter === "All" ? "Nothing published yet. Three pillars, and room for the first idea, perspective, or paper." : `Nothing published in ${pillars.find((pillar) => pillar.id === pillarFilter)?.title} yet. There’s room for a first question, observation, or deeper exploration.`}</p><a href="mailto:mc.ching@gmail.com?subject=An%20idea%20to%20explore" className="text-link">Have a question worth exploring? <Arrow diagonal /></a></div>
+      <div><span className="small-label">THE NEXT CHAPTER IS TAKING SHAPE</span><h3>Room for ideas.<br /><em>Space for what’s next.</em></h3><p>{pillarFilter === "All" ? "Nothing published yet. Three pillars, and room for the first idea, perspective, or paper." : `Nothing published in ${pillars.find((pillar) => pillar.id === pillarFilter)?.title} yet. There’s room for a first question, observation, or deeper exploration.`}</p><a href="#connect" className="text-link">Have a question worth exploring? <Arrow /></a></div>
     </div>
       ) : <>
       {visible.length === 0 && <p className="library-loading" role="status">No pieces match these filters yet. Try another pillar or format.</p>}

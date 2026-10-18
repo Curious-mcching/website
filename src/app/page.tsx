@@ -1,6 +1,9 @@
 import Image from "next/image";
 import { Arrow } from "@/components/arrow";
 import { ContactLink } from "@/components/contact-link";
+import { ContactEntryLink } from "@/components/contact-entry-link";
+import { ContactForm } from "@/components/contact-form";
+import { contactLinkedIn } from "@/lib/contact";
 import { ChallengerFilms } from "@/components/challenger-films";
 import { challengerFilms, enterpriseFilms } from "@/lib/challenger-films";
 import { HomeHeader } from "@/components/home-header";
@@ -15,11 +18,10 @@ import { pillars } from "@/lib/thought-leadership";
 export default function Home() {
   return (
     <>
-      <a className="skip-link" href="#main">Skip to content</a>
       <HomeHeader><SiteHeader anchorId={null} /></HomeHeader>
-      <main id="main" className="editorial-home">
+      <main id="main" tabIndex={-1} className="editorial-home">
         <PageMotion />
-        <section id="top" className="hero" aria-labelledby="hero-title">
+        <section id="top" tabIndex={-1} className="hero" aria-labelledby="hero-title">
           <div className="hero-copy">
             <h1 id="hero-title">Curious by nature.<br /><em>A challenger<br />at heart.</em></h1>
             <div className="hero-description">
@@ -36,11 +38,11 @@ export default function Home() {
           <div className="hero-bottom wrap"><span>Michelle Ching <span className="hero-signoff-dot" aria-hidden="true">·</span> Always curious</span><a href="#throughline">Discover the throughline <Arrow /></a></div>
         </section>
 
-        <section id="throughline" className="intro-section wrap" aria-labelledby="intro-title" data-reveal>
+        <section id="throughline" tabIndex={-1} className="intro-section wrap" aria-labelledby="intro-title">
           <p className="eyebrow section-label">THE THROUGHLINE</p>
           <h2 id="intro-title" className="intro-heading">Bold thinking.<br /><em>Grounded in experience.</em></h2>
-          <div className="intro-grid">
-            <figure className="curiosity-panel" data-reveal>
+          <div className="intro-grid" data-reveal>
+            <figure className="curiosity-panel">
               <Image className="intro-portrait" src="/images/michelle-ching-2025.jpg" alt="Michelle Ching" width={584} height={438} sizes="(max-width: 760px) calc(100vw - 40px), (max-width: 1400px) 48vw, 620px" />
               <figcaption className="curiosity-copy">
                 <h3>Curiosity is a <em>strategy.</em></h3>
@@ -54,7 +56,7 @@ export default function Home() {
               <a className="text-link throughline-link" href="#expertise">See where we could make a difference <Arrow /></a>
             </div>
           </div>
-          <section id="agency-experience" className="experience-overview" aria-labelledby="agency-experience-title">
+          <section id="agency-experience" tabIndex={-1} className="experience-overview" aria-labelledby="agency-experience-title">
             <div className="experience-overview-intro">
             <div className="experience-overview-copy">
               <div className="experience-tenure-line"><p className="experience-tenure">20+ years of experience.</p><span className="experience-impact">Real-world impact</span></div>
@@ -84,14 +86,14 @@ export default function Home() {
                 <h4 id="experience-industries-title" className="experience-lens-title">Across Industries</h4>
                 <p className="experience-perspective-copy">Working across industries has taught me to challenge category habits and start with what customers value. I draw on different business models, competitive pressures and customer needs to find a clear position, identify growth opportunities and bring a fresh perspective to familiar challenges.</p>
                 <ul className="experience-ribbon" aria-label="Industries I have worked across">
-                  {["Financial Services", "Automotive", "Technology", "Consumer Packaged Goods", "Telecommunications", "Postal & Logistics", "Lottery & Gaming", "Non-Profit"].map((industry) => <li key={industry}>{industry}</li>)}
+                  {["Financial Services", "Automotive", "Technology", "Lottery & Gaming", "Consumer Packaged Goods", "Non-Profit", "Telecommunications", "Postal & Logistics"].map((industry) => <li key={industry}>{industry}</li>)}
                 </ul>
               </section>
               <section aria-labelledby="experience-disciplines-title">
                 <ExperienceLensArt kind="disciplines" />
                 <h4 id="experience-disciplines-title" className="experience-lens-title">Building Brands.<br />Modernizing Marketing.</h4>
                 <p className="experience-perspective-copy">I connect brand strategy, customer insight and go-to-market execution across the customer lifecycle. My agency and enterprise experience shapes how I modernize marketing—bringing creator partnerships and AI discoverability into the mix, while aligning teams and investment around customer value and commercial priorities.</p>
-                <ul className="experience-ribbon" aria-label="Marketing leadership capabilities">
+                <ul className="experience-ribbon capability-index" aria-label="Marketing leadership capabilities">
                   {["Brand & Positioning", "Integrated Go-to-Market Strategy", "Customer Lifecycle", "Emerging Media & Discovery"].map((discipline) => <li key={discipline}>{discipline}</li>)}
                 </ul>
               </section>
@@ -107,11 +109,11 @@ export default function Home() {
           </section>
         </section>
 
-        <section id="expertise" className="expertise-section wrap" aria-labelledby="expertise-title">
+        <section id="expertise" tabIndex={-1} className="expertise-section wrap" aria-labelledby="expertise-title">
           <div className="section-heading stacked-intro" data-reveal>
             <div>
               <p className="eyebrow section-label">WHERE WE COULD MAKE A DIFFERENCE</p><h2 id="expertise-title">Your next challenge.<br /><em>Our starting point.</em></h2><p className="section-intro-copy">Big ambitions. Complex questions. New possibilities.<br />Let’s connect the dots—and find a way forward.</p>
-              <a className="button section-invitation" href="#connect">Start with a question <Arrow /></a>
+              <ContactEntryLink className="button section-invitation" conversation="advisory">Start with a question <Arrow /></ContactEntryLink>
             </div>
             <div className="collaboration-intro-art" aria-hidden="true">
               <Image src="/images/collaboration-editorial-dawn.png" alt="" fill sizes="(max-width: 760px) 100vw, 42vw" />
@@ -119,25 +121,25 @@ export default function Home() {
           </div>
           <div className="collaboration-grid">
             {offerings.map((offering) => (
-              <article className="collaboration-card" key={offering.number} data-reveal>
+              <article className="collaboration-card" key={offering.number}>
                 <div className="collaboration-card-top"><p className="small-label">{offering.title}</p><span className="collaboration-number" aria-hidden="true">{offering.number}</span></div>
                 <h3>{offering.intro}</h3>
                 <p className="collaboration-description">{offering.description}</p>
                 <ul className="collaboration-outcomes" aria-label="Ways we could work together">{offering.outcomes.split(" · ").map((outcome) => <li key={outcome}>{outcome}</li>)}</ul>
-                <ContactLink className="collaboration-link" ariaLabel={`Let’s explore ${offering.title.toLowerCase()}`} subject={`Let's talk: ${offering.title}`}>Let’s explore this <span><Arrow diagonal /></span></ContactLink>
+                <ContactEntryLink className="collaboration-link" ariaLabel={`Let’s explore this: ${offering.title.toLowerCase()}`} conversation={offering.number === "04" ? "speaking" : "advisory"}>Let’s explore this <span><Arrow diagonal /></span></ContactEntryLink>
               </article>
             ))}
           </div>
         </section>
 
-        <section id="experience" className="work-section" aria-labelledby="work-title">
+        <section id="experience" tabIndex={-1} className="work-section" aria-labelledby="work-title">
           <div className="wrap">
             <div className="section-heading leadership-intro" data-reveal>
               <div><p className="eyebrow section-label">LEADERSHIP IN ACTION</p><h2 id="work-title">Different challenges. One challenger mindset.</h2><div className="leadership-copy"><p>From challenging industry giants to driving reinvention within established organizations, my career has taken me across both sides of the challenger equation. My perspective has been shaped by both agency and executive leadership—across categories, business models and very different customer needs.</p><p>Different environments. Different complexities. But one consistent belief: meaningful progress begins when we question the conventional, see possibilities others might miss, and bring people together to make them happen.</p><p>Here are four experiences that have shaped how I think, lead and create change.</p></div><a className="button section-invitation" href="#challenger">Explore my thinking <Arrow /></a></div>
               <div className="leadership-intro-art" aria-hidden="true"><div className="leadership-art-bleed"><Image src="/images/leadership-perspectives.png" alt="" fill sizes="(max-width: 760px) 100vw, (max-width: 1280px) 50vw, calc((100vw - 1280px) / 2 + 600px)" /></div></div>
             </div>
             <div className="leadership-stories">
-              <details className="leadership-story" name="leadership-stories" data-reveal>
+              <details className="leadership-story" name="leadership-stories">
                 <summary className="leadership-summary">
                   <h3 id="leadership-story-01">
                   <span className="leadership-number" aria-hidden="true">01</span>
@@ -162,7 +164,7 @@ export default function Home() {
                     <p><em>Strategic differentiation · Customer-led growth · Commercial discipline · Creative courage</em></p>
                   </div>
               </details>
-              <details className="leadership-story" name="leadership-stories" data-reveal>
+              <details className="leadership-story" name="leadership-stories">
                 <summary className="leadership-summary">
                   <h3 id="leadership-story-02">
                   <span className="leadership-number" aria-hidden="true">02</span>
@@ -189,7 +191,7 @@ export default function Home() {
                     <p><em>Enterprise reinvention · Strategic partnerships · Creative courage · Cross-functional leadership</em></p>
                   </div>
               </details>
-              <details className="leadership-story" name="leadership-stories" data-reveal>
+              <details className="leadership-story" name="leadership-stories">
                 <summary className="leadership-summary">
                   <h3 id="leadership-story-03">
                   <span className="leadership-number" aria-hidden="true">03</span>
@@ -214,7 +216,7 @@ export default function Home() {
                     <p><em>Customer experience · Personalization · Digital transformation · Human-centred innovation</em></p>
                   </div>
               </details>
-              <details className="leadership-story" name="leadership-stories" data-reveal>
+              <details className="leadership-story" name="leadership-stories">
                 <summary className="leadership-summary">
                   <h3 id="leadership-story-04">
                   <span className="leadership-number" aria-hidden="true">04</span>
@@ -242,16 +244,17 @@ export default function Home() {
                   </div>
               </details>
             </div>
+            <ContactEntryLink className="text-link leadership-contact" conversation="executive">Discuss an executive opportunity <Arrow /></ContactEntryLink>
           </div>
         </section>
 
-        <section id="challenger" className="challenger-section" aria-labelledby="challenger-title">
+        <section id="challenger" tabIndex={-1} className="challenger-section" aria-labelledby="challenger-title">
           <div className="wrap">
-            <div className="challenger-topline" data-reveal><p className="eyebrow section-label">THOUGHT LEADERSHIP / AN EVOLVING EXPLORATION</p><span className="project-tag">THREE PILLARS. ROOM TO STRETCH.</span></div>
+            <div className="challenger-topline"><p className="eyebrow section-label">THOUGHT LEADERSHIP / AN EVOLVING EXPLORATION</p><span className="project-tag">THREE PILLARS. ROOM TO STRETCH.</span></div>
             <div className="challenger-intro" data-reveal><h2 id="challenger-title">Questions I’m exploring.<br /><em>Thinking that keeps growing.</em></h2><div className="challenger-context"><p className="large-copy">For the thinkers. The dreamers. The leaders.</p><p>Three connected threads for my points of view, ideas, and perspectives. Grounded in experience, open to new possibilities.</p><p>Some thoughts will become papers. Others will start as a question, an observation, or a conversation. This is a space to stretch my thinking—and invite you into it.</p><a href="#perspectives" className="text-link">Explore the writing space <Arrow /></a></div></div>
             <div className="thought-pillars">
               {pillars.map((pillar) => (
-                <article className="thought-pillar" key={pillar.id} data-reveal>
+                <article className="thought-pillar" key={pillar.id}>
                   <div className={`pillar-art pillar-art-${pillar.id}`} aria-hidden="true"><i /><i /><i /></div>
                   <div><p className="small-label">{pillar.lens}</p><h3>{pillar.title}</h3><p className="pillar-question">{pillar.question}</p><p className="pillar-description">{pillar.description}</p></div>
                 </article>
@@ -260,16 +263,16 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="perspectives" className="perspectives-section" aria-labelledby="perspectives-title">
+        <section id="perspectives" tabIndex={-1} className="perspectives-section" aria-labelledby="perspectives-title">
           <div className="wrap">
           <div className="section-heading stacked-intro" data-reveal><div><p className="eyebrow section-label">POVS, IDEAS & PERSPECTIVES</p><h2 id="perspectives-title">The thinking <em>in progress.</em></h2><p className="section-intro-copy">From a first observation to a considered paper.<br />A growing collection across three pillars.</p></div></div>
           <PovLibrary />
           </div>
         </section>
 
-        <section id="connect" className="connect-section" aria-labelledby="connect-title">
-          <div className="connect-inner wrap" data-reveal><div><p className="eyebrow section-label">LET’S EXCHANGE IDEAS</p><h2 id="connect-title">What are you<br /><em>thinking about?</em></h2><p>A growth challenge. An organization ready for reinvention. A leadership opportunity. Or simply an idea worth exploring.</p><p>I&apos;m open to conversations about strategic advisory, consulting, speaking and executive leadership.</p></div>
-          <div className="connect-actions"><ContactLink className="button button-dark">Let&apos;s start a conversation <Arrow /></ContactLink><ContactLink className="connect-email">mc.ching@gmail.com</ContactLink></div></div>
+        <section id="connect" tabIndex={-1} className="connect-section" aria-labelledby="connect-title">
+          <div className="connect-inner wrap" data-reveal><div className="contact-introduction"><p className="eyebrow section-label">LET’S CONNECT</p><h2 id="connect-title">What could we<br /><em>build together?</em></h2><p>Have an opportunity, a challenge, or an idea worth exploring? I’d love to hear what you have in mind.</p><div className="contact-alternatives"><a href={contactLinkedIn} target="_blank" rel="noopener noreferrer" className="connect-email">Prefer LinkedIn? Connect with me there.<span className="sr-only"> (opens in a new tab)</span><Arrow diagonal /></a><ContactLink className="connect-email">Email me directly <Arrow diagonal /></ContactLink></div></div>
+          <ContactForm /></div>
         </section>
       </main>
       <SiteFooter />

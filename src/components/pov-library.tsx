@@ -5,6 +5,7 @@ import Image from "next/image";
 import type { Pov } from "@/lib/povs";
 import { pillars, pillarFor, writingFormats } from "@/lib/thought-leadership";
 import { Arrow } from "./arrow";
+import { ContactEntryLink } from "./contact-entry-link";
 
 export function PovLibrary() {
   const [povs, setPovs] = useState<Pov[] | null>(null);
@@ -30,19 +31,20 @@ export function PovLibrary() {
         <div className="library-filters" role="group" aria-label="Filter by pillar">{[{ id: "All", title: "All pillars" }, ...pillars].map((option) => <button type="button" key={option.id} aria-pressed={pillarFilter === option.id} onClick={() => setPillarFilter(option.id)}>{option.title}</button>)}</div>
         <div className="library-filters format-filters" role="group" aria-label="Filter by format">{["All", ...writingFormats].map((option) => <button type="button" key={option} aria-pressed={filter === option} onClick={() => setFilter(option)}>{option === "All" ? "All formats" : option}</button>)}</div>
       </div>
+      {povs.length > 0 && <p className="sr-only" role="status">{visible.length ? `${visible.length} ${visible.length === 1 ? "piece" : "pieces"} shown.` : "No pieces match these filters yet. Try another pillar or format."}</p>}
       {povs.length === 0 ? (
     <div className="writing-empty">
       <div className="writing-art-bleed" aria-hidden="true"><Image className="writing-artwork" src="/images/art-of-possibility.png" alt="" fill sizes="(max-width: 760px) 100vw, (max-width: 1050px) 50vw, 520px" /></div>
-      <div><span className="small-label">THE NEXT CHAPTER IS TAKING SHAPE</span><h3>Room for ideas.<br /><em>Space for what’s next.</em></h3><p>{pillarFilter === "All" ? "Nothing published yet. Three pillars, and room for the first idea, perspective, or paper." : `Nothing published in ${pillars.find((pillar) => pillar.id === pillarFilter)?.title} yet. There’s room for a first question, observation, or deeper exploration.`}</p><a href="#connect" className="text-link">Have a question worth exploring? <Arrow /></a></div>
+      <div><span className="small-label">THE NEXT CHAPTER IS TAKING SHAPE</span><h3>Room for ideas.<br /><em>Space for what’s next.</em></h3><p>{pillarFilter === "All" ? "Nothing published yet. Three pillars, and room for the first idea, perspective, or paper." : `Nothing published in ${pillars.find((pillar) => pillar.id === pillarFilter)?.title} yet. There’s room for a first question, observation, or deeper exploration.`}</p><ContactEntryLink className="text-link">Have a question worth exploring? <Arrow /></ContactEntryLink></div>
     </div>
       ) : <>
-      {visible.length === 0 && <p className="library-loading" role="status">No pieces match these filters yet. Try another pillar or format.</p>}
+      {visible.length === 0 && <p className="library-loading">No pieces match these filters yet. Try another pillar or format.</p>}
       <div className="pov-grid">{visible.map((pov) => (
         <article className="pov-card" key={pov.id}>
           <div className="pov-meta"><span>{pov.kind} / {pillars.find((pillar) => pillar.id === pillarFor(pov))?.title}</span><time dateTime={pov.publishedAt}>{new Intl.DateTimeFormat("en-CA", { month: "short", year: "numeric", timeZone: "America/Toronto" }).format(new Date(pov.publishedAt))}</time></div>
           <h3>{pov.title}</h3><p>{pov.summary}</p>
           {pov.experience && <details className="pov-experience"><summary>The experience behind it <span aria-hidden="true">+</span></summary><p>{pov.experience}</p></details>}
-          {pov.hasPdf !== false && <a className="text-link" href={`/api/povs/${pov.id}`} target="_blank" rel="noreferrer">Read the {pov.kind === "Paper" ? "paper" : "piece"} (PDF) <Arrow diagonal /></a>}
+          {pov.hasPdf !== false && <a className="text-link" href={`/api/povs/${pov.id}`} target="_blank" rel="noreferrer" aria-label={`Read the ${pov.kind === "Paper" ? "paper" : "piece"} (PDF): ${pov.title} (opens in a new tab)`}>Read the {pov.kind === "Paper" ? "paper" : "piece"} (PDF) <Arrow diagonal /></a>}
         </article>
       ))}</div>
       </>}

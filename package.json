@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "typecheck": "next typegen && tsc --noEmit",
-    "test:publishing": "node scripts/test-publishing.mjs"
+    "test:publishing": "node scripts/test-publishing.mjs",
+    "test:contact": "node --test scripts/test-contact.mjs"
   },
   "dependencies": {
     "next": "16.4.0",

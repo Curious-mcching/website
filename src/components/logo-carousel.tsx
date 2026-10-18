@@ -16,7 +16,7 @@ export function LogoCarousel() {
           {[0, 1].map((copy) => (
             <div className="logo-set" key={copy} aria-hidden={copy === 1 ? true : undefined}>
               {logos.map((logo) => (
-                <Image className={`company-logo ${logo.className}`} key={logo.file} src={`/logos/${logo.file}`} alt={copy === 0 ? logo.name : ""} width={logo.width} height={logo.height} sizes={logo.size} loading="eager" />
+                <Image className={`company-logo ${logo.className}`} key={logo.file} src={`/logos/${logo.file}`} alt={copy === 0 ? logo.name : ""} width={logo.width} height={logo.height} sizes={logo.size} />
               ))}
             </div>
           ))}

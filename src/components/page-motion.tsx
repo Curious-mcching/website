@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { setupPillarMotion, setupSectionEntrances } from "@/lib/section-motion";
 
 export function PageMotion() {
   const progress = useRef<HTMLDivElement>(null);
@@ -11,26 +12,8 @@ export function PageMotion() {
 
     const elements = [...page.querySelectorAll<HTMLElement>("[data-reveal]")];
     const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
-    let observer: IntersectionObserver | undefined;
-    const configureReveals = () => {
-      observer?.disconnect();
-      elements.forEach((element) => element.removeAttribute("data-motion"));
-      if (preference.matches || !("IntersectionObserver" in window)) return;
-
-      observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          entry.target.setAttribute("data-motion", "visible");
-          observer?.unobserve(entry.target);
-        });
-      }, { rootMargin: "0px 0px -24px 0px" });
-
-      elements.forEach((element) => {
-        if (element.getBoundingClientRect().top < window.innerHeight - 24) return;
-        element.setAttribute("data-motion", "pending");
-        observer?.observe(element);
-      });
-    };
+    const stopEntrances = setupSectionEntrances(elements, preference);
+    const stopPillars = setupPillarMotion([...page.querySelectorAll<HTMLElement>(".pillar-art")], preference);
 
     let frame = 0;
     const updateProgress = () => {
@@ -43,15 +26,12 @@ export function PageMotion() {
       });
     };
 
-    configureReveals();
     updateProgress();
-    preference.addEventListener("change", configureReveals);
     window.addEventListener("scroll", updateProgress, { passive: true });
     window.addEventListener("resize", updateProgress);
     return () => {
-      observer?.disconnect();
-      elements.forEach((element) => element.removeAttribute("data-motion"));
-      preference.removeEventListener("change", configureReveals);
+      stopEntrances();
+      stopPillars();
       window.removeEventListener("scroll", updateProgress);
       window.removeEventListener("resize", updateProgress);
       window.cancelAnimationFrame(frame);

@@ -60,6 +60,61 @@ Use `npm install` when intentionally changing dependencies, then commit the
 updated package.json and package-lock.json together. Use `npm ci` to reinstall
 exactly the locked dependencies.
 
+## Contact conversations
+
+The homepage's `#connect` section is the single destination for navigation,
+footer, collaboration and leadership enquiries. Contextual links use
+`/?conversation=executive#connect`, `advisory`, or `speaking`; a general visit
+starts with “Something else.” Visitors can always change that selection.
+The visible Message label stays in place while its guidance changes.
+
+The existing confirmed recipient is `mc.ching@gmail.com`. Direct email options
+and the existing LinkedIn profile remain usable even before form activation.
+No mailing list, booking service, uploaded files, local message storage or
+automatic reply is added.
+
+There was no sending service configured. `/api/contact` now supports
+[Resend's email API](https://resend.com/docs/api-reference/emails/send-email)
+through server-side fetch, without another dependency. To activate it:
+
+1. Set up a Resend account and [verify a sending domain](https://resend.com/docs/dashboard/domains/introduction).
+2. Add `RESEND_API_KEY` and `CONTACT_FROM_EMAIL` to the deployment's **server**
+   environment. The latter must be a sender on that verified domain; it is not
+   the visitor's address. For local development use the ignored `.env.local`,
+   then restart the development server. Never use `NEXT_PUBLIC_` for these values
+   or commit credentials. The recipient is fixed in `src/lib/contact.ts` and
+   cannot be supplied by a visitor. Visitor email is used only as Reply-To.
+3. Restart/redeploy and send a genuine test. Confirm it arrives in the recipient
+   inbox and that Reply goes to the visitor. Provider acceptance is not proof of
+   inbox delivery; check provider logs for bounces or delivery problems.
+
+For local testing before domain verification, Resend supplies
+`onboarding@resend.dev`. It can send only to the Resend account owner's email
+([testing restriction](https://resend.com/docs/api-reference/errors)). This
+project's local setup uses that sender with a sending-only key and the existing
+recipient, which matches the account owner. A real form submission was reported
+Delivered by Resend on 2026-10-17. Inbox placement and replying from the recipient's
+mail app were not checked. Use a verified domain sender for launch, and configure
+the hosting service separately; ignored local settings are not deployed by Git.
+
+Without both settings, the form displays an unavailable notice and submissions
+return 503. No success is shown. Failures preserve the draft and offer retry;
+only a successful provider response with a message ID permits the success state.
+Identical retries reuse a provider idempotency key to avoid duplicate emails.
+See [Resend's idempotency behavior](https://resend.com/docs/dashboard/emails/idempotency-keys).
+
+Validation runs on client and server. The endpoint rejects cross-origin requests,
+oversized bodies, invalid choices and filled honeypots; sends plain text only;
+and does not log messages or raw addresses. Basic process-local limits allow
+six valid send attempts per address per ten minutes and twenty per process per
+minute. These reset on restarts and are not shared between serverless instances.
+Use the deployment host's shared rate limiting/WAF for public production traffic.
+Sending requires a Node-capable deployment, not a static-only export.
+
+`npm run test:contact` tests validation, request rejection, unavailable service,
+provider success/failure, retry idempotency and rate limits with a mocked provider.
+It cannot send real email or establish real inbox delivery.
+
 ## Checks and production
 
 ```sh
